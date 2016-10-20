@@ -31,8 +31,13 @@ var letters = {
 $("#inputArea").keydown(function (e) {
 
 $('#textArea').append(letters[e.keyCode]);
-
+if ($("input:checked").val() == "echo")
 });
 // get the keydown event handler working (you are listening in "inputText")
 
-// translate the e.keyCode number into a letter, using your object
+$("input[type='radio']").click(function() {
+  $("input:checked").prop('checked', false);
+  $(this).prop('checked', true);
+});
+
+if ($("input:checked").val() == "echo")
