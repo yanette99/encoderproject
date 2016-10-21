@@ -41,14 +41,30 @@ if ($("input:checked").val() == "caesarcipher"){
 
 if ($("input:checked").val() == "heiroglyphics"){
   $('#textArea').append("<img src = 'images/heiroglyphics/" + (letters[e.keyCode]) + ".gif'>")
-
 }
-
 
 });
 // get the keydown event handler working (you are listening in "inputText")
 
+
 $("input[type='radio']").click(function() {
   $("input:checked").prop('checked', false);
   $(this).prop('checked', true);
+});
+
+$("#translationInputText").keydown(function(e){
+  if(e.keyCode == 13){
+
+//translate stuff
+
+    var  messageToDecode =  $("#translationInputText").val();
+
+    var messageArray = messageToDecode.split("");
+
+    for (var i = 0; i < messageArray.length; i++) {
+
+      var translateNumber = messageArray[i].charCodeAt(0)- 32 + 1;
+      $("#translationArea").append(letters[translateNumber])
+    }
+  }
 });
