@@ -1,5 +1,6 @@
 // make an object that translates numbers to letters
 var letters = {
+64: "z",
 65: "a",
 66: "b",
 67: "c",
@@ -30,8 +31,20 @@ var letters = {
 
 $("#inputArea").keydown(function (e) {
 
-$('#textArea').append(letters[e.keyCode]);
-if ($("input:checked").val() == "echo")
+if ($("input:checked").val() == "echo"){
+  $('#textArea').append(letters[e.keyCode])
+  }
+
+if ($("input:checked").val() == "caesarcipher"){
+    $('#textArea').append(letters[e.keyCode - 1])
+}
+
+if ($("input:checked").val() == "heiroglyphics"){
+  $('#textArea').append("<img src = 'images/heiroglyphics/" + (letters[e.keyCode]) + ".gif'>")
+
+}
+
+
 });
 // get the keydown event handler working (you are listening in "inputText")
 
@@ -39,5 +52,3 @@ $("input[type='radio']").click(function() {
   $("input:checked").prop('checked', false);
   $(this).prop('checked', true);
 });
-
-if ($("input:checked").val() == "echo")
